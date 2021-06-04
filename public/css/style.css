@@ -1,0 +1,56 @@
+*,
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  box-sizing: border-box;
+}
+body {
+  background-color: #fafafa;
+}
+.card {
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px #ccc;
+  border-radius: 5px;
+  max-width: 1000px;
+  margin: 20px auto;
+}
+textarea {
+  border: 1px solid #1682ca;
+  box-shadow: inside 0px 0px 5px #ccc;
+  width: 100%;
+  padding: 20px;
+}
+.display-card {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-left: 10px;
+  background-color: #fff;
+  border: 1px solid orange;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.display-card.active {
+  background-color: orange;
+}
+.selectall {
+  padding: 30px;
+  background-color: aqua;
+  clear: both;
+}
+.clearfix {
+  clear: both;
+}
+.clearfix::after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.action button {
+  width: 200px;
+  padding: 10px 45px;
+  font-size: 1.5rem;
+}

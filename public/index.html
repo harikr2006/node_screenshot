@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Statiic</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="card">
+        <form action="http://localhost:3290/" method="POST">
+            <textarea name="weblinks" id="" cols="30" rows="20" placeholder="weblinks"></textarea>
+            <!-- <input type="number" name="width" value="1024"> &times; <input type="number" name="height" value="768"> 
+            <input type="number" name="width" value="768"> &times; <input type="number" name="height" value="400">  -->
+            <div>
+                <a href="" class="selectall">Select all</a>
+            </div>
+            <div class="clearfix"></div>
+           <div>
+            <div class="display-card">240x320</div>
+            <div class="display-card">280x653</div>
+            <div class="display-card">320x480</div>
+            <div class="display-card">320x533</div>
+            <div class="display-card">320x568</div>
+            <div class="display-card">360x640</div>
+            <div class="display-card">375x667</div>
+            <div class="display-card">375x812</div>
+            <div class="display-card">384x640</div>
+            <div class="display-card">412x732</div>
+            <div class="display-card">411x731</div>
+            <div class="display-card">414x736</div>
+            <div class="display-card">411x823</div>
+            <div class="display-card">480x854</div>
+            <div class="display-card">540x720</div>
+            <div class="display-card">600x960</div>
+            <div class="display-card">600x1024</div>
+            <div class="display-card">640x360</div>
+            <div class="display-card">768x1024</div>
+            <div class="display-card">800x1280</div>
+            <div class="display-card">1024x768</div>
+            <div class="display-card">1024x1366</div>
+            <div class="display-card">1280x800</div>
+            <div class="display-card">1280x950</div>
+            <div class="display-card">1440x900</div>
+           </div>
+            
+            
+            
+            <div class="action"><button type="submit">Submit</button></div>
+        </form>
+    </div>
+    <script>
+        document.querySelector(".selectall").addEventListener("click",function(e){
+            e.preventDefault();
+            document.querySelectorAll(".display-card").forEach((item)=>{
+                item.click(e);
+            })
+            if(e.target.innerText=="Select all"){
+                e.target.innerText = "Unselect all";
+            }
+            else{
+                e.target.innerText = "Select all";
+            }
+            
+        })
+        Array.prototype.forEach.call(document.getElementsByClassName("display-card"),(a)=>{
+            a.addEventListener("click",function(ele){
+                if(ele.target.className.indexOf("active")==-1){
+                var input = document.createElement("input"),input2 = document.createElement("input");
+                    input.name="width";
+                    input2.name="height";
+                    input.type="hidden";
+                    input2.type="hidden";
+                    input.value = ele.target.innerHTML.split("x")[0];
+                    input2.value = ele.target.innerHTML.split("x")[1];
+                    ele.target.appendChild(input);ele.target.appendChild(input2);
+                    ele.target.className=ele.target.className+" active";
+                }
+                else{
+                    var classNam =  ele.target.className.replace("active","");
+                    ele.target.className = classNam;
+                    ele.target.querySelectorAll("input").forEach((element) => {
+                        element.remove();
+                    })
+                }
+            })
+            
+        })
+    </script>
+</body>
+</html>
