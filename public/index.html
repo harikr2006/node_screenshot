@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="card">
-        <form action="http://localhost:3290/" method="POST">
+        <form action="" method="POST">
             <textarea name="weblinks" id="" cols="30" rows="20" placeholder="weblinks"></textarea>
             <!-- <input type="number" name="width" value="1024"> &times; <input type="number" name="height" value="768"> 
             <input type="number" name="width" value="768"> &times; <input type="number" name="height" value="400">  -->
@@ -51,6 +51,7 @@
         </form>
     </div>
     <script>
+        document.forms[0].setAttribute("action",window.location.origin);
         document.querySelector(".selectall").addEventListener("click",function(e){
             e.preventDefault();
             document.querySelectorAll(".display-card").forEach((item)=>{

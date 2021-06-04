@@ -13,6 +13,7 @@ require('events').EventEmitter.prototype._maxListeners = 100;
 app.get("/", async (req, res) => { req.send("./public/index.html"); });
 //post requrest
 app.post("/", async (req, res) => {
+    
     var randomeName = "folder_" + Math.floor(Math.random() * 10000000);
     var list = req.body.weblinks.split("\r\n");
     var width = req.body.width;
@@ -32,7 +33,12 @@ app.post("/", async (req, res) => {
         await zip.addLocalFolder(path.join(basefolder, randomeName));
         await zip.writeZip(path.join(basefolder, randomeName + ".zip"));
         fs.rmdirSync(path.join(basefolder, randomeName), { recursive: true });
-        res.redirect("http://localhost:3290/" + path.join("screenshots", randomeName + ".zip"));
+        
+        var urlSetup = req.headers.origin;
+        
+        urlSetup = (urlSetup.indexOf('localhost')==-1)?"https://responsive-shot.glitch.me/":"http://localhost:3290/";
+        
+        res.redirect(urlSetup + path.join("screenshots", randomeName + ".zip"));
     }
     else {
         res.end(JSON.stringify({ error: "invalid links" }))
@@ -43,6 +49,9 @@ app.listen(3290, () => {
     console.log(`The server running on port number ${3290}`);
 })
 async function getScreenShot(url, FileName, directory, width, height) {
+    if(typeof width=="string"){
+        width = width.split(" ");
+    }
     await Promise.all(width.map(async (w, index) => {
         try {
             const browser = await puppeteer.launch();
