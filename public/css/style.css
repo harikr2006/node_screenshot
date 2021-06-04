@@ -32,9 +32,12 @@ textarea {
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 10px;
+  transition: all ease-in-out 0.5s;
 }
 .display-card.active {
   background-color: orange;
+  color: #1d1913;
+  border-radius: 40px;
 }
 .selectall {
   padding: 30px;
