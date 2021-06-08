@@ -3,8 +3,10 @@ body,
 html {
   margin: 0;
   padding: 0;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
+  transition: all 0.3s ease-in;
+  outline: 0px solid #fff;
 }
 body {
   background-color: #fafafa;
@@ -16,12 +18,17 @@ body {
   border-radius: 5px;
   max-width: 1000px;
   margin: 20px auto;
+  position: relative;
 }
 textarea {
-  border: 1px solid #1682ca;
-  box-shadow: inside 0px 0px 5px #ccc;
+  border: 1px solid #c2c2c2;
   width: 100%;
   padding: 20px;
+  resize: vertical;
+  font-size: 1rem;
+}
+textarea:focus {
+  box-shadow: 0px 10px 10px rgba(201, 201, 201, 0.4);
 }
 .display-card {
   display: inline-block;
@@ -32,17 +39,26 @@ textarea {
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 10px;
-  transition: all ease-in-out 0.5s;
+  transition: all ease-in-out 0.5gits;
 }
 .display-card.active {
   background-color: orange;
   color: #1d1913;
   border-radius: 40px;
 }
+.display-card:hover {
+  background-color: #f8ce81;
+}
 .selectall {
-  padding: 30px;
-  background-color: aqua;
+  padding: 0px;
   clear: both;
+  position: absolute;
+  right: 0;
+}
+.betweenbox {
+  position: relative;
+  min-height: 40px;
+  width: 100%;
 }
 .clearfix {
   clear: both;
@@ -52,8 +68,20 @@ textarea {
   display: table;
   clear: both;
 }
+.action {
+  padding: 20px 0;
+}
 .action button {
-  width: 200px;
-  padding: 10px 45px;
-  font-size: 1.5rem;
+  width: auto;
+  padding: 10px 25px;
+  font-size: 1.2rem;
+  background-color: #f3d37b;
+  border: 1px solid #c78118;
+  transition: all 0.3s ease-in;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.action button:hover {
+  background-color: #c78118;
+  color: #fff;
 }

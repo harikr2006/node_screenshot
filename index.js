@@ -45,9 +45,9 @@ app.post("/", async (req, res) => {
     }
 })
 
-app.listen(3290, () => {
-    console.log(`The server running on port number ${3290}`);
-})
+// app.listen(3290, () => {
+//     console.log(`The server running on port number ${3290}`);
+// })
 async function getScreenShot(url, FileName, directory, width, height) {
     if(typeof width=="string"){
         width = width.split(" ");
@@ -67,3 +67,5 @@ async function getScreenShot(url, FileName, directory, width, height) {
         }
     }))
 }
+
+module.exports = app;
