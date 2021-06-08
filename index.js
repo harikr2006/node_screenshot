@@ -4,7 +4,7 @@ const fs = require('fs');
 var basefolder = path.join(__dirname, "./public/screenshots");
 const express = require('express');
 var file = require('adm-zip');
-var zip = new file();
+
 const app = express();
 app.use(express.static("./public/"))
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +18,8 @@ app.post("/", async (req, res) => {
     var list = req.body.weblinks.split("\r\n");
     var width = req.body.width;
     var height = req.body.height;
-    console.log(width);
+    
+    
     if (list[0] != "" && width!=undefined) {
         await Promise.all(
             list.map(
@@ -29,7 +30,7 @@ app.post("/", async (req, res) => {
                 }
             )
         );
-        
+        var zip = new file();
         await zip.addLocalFolder(path.join(basefolder, randomeName));
         await zip.writeZip(path.join(basefolder, randomeName + ".zip"));
         fs.rmdirSync(path.join(basefolder, randomeName), { recursive: true });
@@ -45,9 +46,9 @@ app.post("/", async (req, res) => {
     }
 })
 
-// app.listen(3290, () => {
-//     console.log(`The server running on port number ${3290}`);
-// })
+app.listen(3290, () => {
+    console.log(`The server running on port number ${3290}`);
+})
 async function getScreenShot(url, FileName, directory, width, height) {
     if(typeof width=="string"){
         width = width.split(" ");
@@ -68,4 +69,5 @@ async function getScreenShot(url, FileName, directory, width, height) {
     }))
 }
 
-module.exports = app;
+// module.exports = app;
+
